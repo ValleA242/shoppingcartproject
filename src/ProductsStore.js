@@ -31,7 +31,7 @@ function getProductData(id) {
         console.log('Product does not exist for ID: ' + id);
         return 'Undefined'
     }
-
+    //test commit to see if we're connected
     return productData;
 
 }
