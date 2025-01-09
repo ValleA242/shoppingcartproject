@@ -4,21 +4,21 @@ const productArray = [
     {
         id: "1",
         title: "coffee",
-        price: "4.50"
+        price: 4.50
 
     },
 
     {
         id: "2",
         title: "dog food",
-        price: "50"
+        price: 50
 
     },
 
     {
         id: "3",
         title: "TShirt Pack",
-        price: "10"
+        price: 10
 
     },
 ]
@@ -29,9 +29,9 @@ function getProductData(id) {
 
     if (productData === undefined) {
         console.log('Product does not exist for ID: ' + id);
-        return 'Undefined'
+        return undefined
     }
-    //test commit to see if we're connected
+
     return productData;
 
 }
