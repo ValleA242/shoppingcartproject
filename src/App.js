@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cancel from "./pages/cancel";
 import Store from "./pages/store";
 import Success from "./pages/success";
+import CartProvider from './CartContext';
 
 
 function App() {

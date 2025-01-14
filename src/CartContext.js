@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { productArray, getProductData } from "./ProductsStore";
 
 const CartContext = createContext({
@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
     const [cartProducts, setCartProducts] = useState([]);
 
     function getProductQuantity(id) {
-        cartProducts.find(product => product.id === id)?.quantity;
+        const quantity = cartProducts.find(product => product.id === id)?.quantity;
 
         if (quantity === undefined) {
             return 0;
@@ -64,40 +64,41 @@ export function CartProvider({ children }) {
             )
         }
     }
-}
 
-function deleteFromCart(id) {
-    setCartProducts(
-        cartProducts =>
-            cartProducts.filter(currentProduct => {
-                return currentProduct.id != id;
-            })
+
+    function deleteFromCart(id) {
+        setCartProducts(
+            cartProducts =>
+                cartProducts.filter(currentProduct => {
+                    return currentProduct.id != id;
+                })
+        )
+    }
+
+    function getTotalCost() {
+        let totalCost = 0;
+        cartProducts.map((cartItem) => {
+            const productData = getProductData(cartItem.id)
+            totalCost += (productData.price * cartItem.quantity)
+        })
+
+    }
+
+    const contextValue = {
+        items: [],
+        getProductQuantity,
+        addOneToCart,
+        removeOneFromCart,
+        deleteFromCart,
+        getTotalCost
+    }
+
+    return (
+        <CartContext.Provider value={contextValue}>
+            {children}
+        </CartContext.Provider>
     )
-}
-
-function getTotalCost() {
-    let totalCost = 0;
-    cartProducts.map((cartItem) => {
-        const productData = getProductData(cartItem.id)
-        totalCost += (productData.price * cartItem.quantity)
-    })
 
 }
-
-const contextValue = {
-    items: [],
-    getProductQuantity,
-    addOneToCart,
-    removeOneFromCart,
-    deleteFromCart,
-    getTotalCost
-}
-
-return (
-    <CartContext.Provider value={contextValue}>
-        {children}
-    </CartContext.Provider>
-)
-
 
 export default CartProvider
