@@ -48,27 +48,45 @@ export function CartProvider({ children }) {
         }
     }
 
-    function deleteFromCart(id) {
-        setCartProducts(
-            cartProducts =>
-                cartProducts.filter(currentProduct => {
-                    return currentProduct.id != id;
-                })
-        )
-    }
+    function removeOneFromCart(id) {
+        const quantity = getProductQuantity(id)
 
-    const contextValue = {
-        items: [],
-        getProductQuantity,
-        addOneToCart,
-        removeOneFromCart,
-        deleteFromCart,
-        getTotalCost
+        if (quantity == 1) {
+            deleteFromCart(id);
+        } else {
+            setCartProducts(
+                cartProducts.map(
+                    product =>
+                        product.id === id
+                            ? { ...product, quantity: product.quantity - 1 }
+                            : product
+                )
+            )
+        }
     }
+}
 
-    return (
-        <CartContext.Provider value={contextValue}>
-            {children}
-        </CartContext.Provider>
+function deleteFromCart(id) {
+    setCartProducts(
+        cartProducts =>
+            cartProducts.filter(currentProduct => {
+                return currentProduct.id != id;
+            })
     )
+}
+
+const contextValue = {
+    items: [],
+    getProductQuantity,
+    addOneToCart,
+    removeOneFromCart,
+    deleteFromCart,
+    getTotalCost
+}
+
+return (
+    <CartContext.Provider value={contextValue}>
+        {children}
+    </CartContext.Provider>
+)
 }
