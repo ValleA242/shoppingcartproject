@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { productArray } from "./ProductsStore";
+import { productArray, getProductData } from "./ProductsStore";
 
 const CartContext = createContext({
     items: [],
@@ -75,6 +75,15 @@ function deleteFromCart(id) {
     )
 }
 
+function getTotalCost() {
+    let totalCost = 0;
+    cartProducts.map((cartItem) => {
+        const productData = getProductData(cartItem.id)
+        totalCost += (productData.price * cartItem.quantity)
+    })
+
+}
+
 const contextValue = {
     items: [],
     getProductQuantity,
@@ -89,4 +98,6 @@ return (
         {children}
     </CartContext.Provider>
 )
-}
+
+
+export default CartProvider
