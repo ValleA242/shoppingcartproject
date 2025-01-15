@@ -1,8 +1,12 @@
 //BS imports 
 import { Card, Button, Form, Row, Col } from 'react-bootstrap';
+import { CartContext } from '../CartContext';
+import { useContext } from 'react';
 
 function ProductCard(props) {
     const product = props.product;
+    const cart = useContext(CartContext);
+    const productQuantity = cart.getProductQuantity(product.id);
 
     return (
         <Card>
@@ -13,7 +17,7 @@ function ProductCard(props) {
                 <Card.Text>
                     ${product.price}
                 </Card.Text>
-                <Button variant='primary'>Add to Cart</Button>
+                <Button variant='primary' onClick={() => cart.addOneToCart(product.id)}>Add to Cart</Button>
             </Card.Body>
         </Card>
     )

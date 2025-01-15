@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { productArray, getProductData } from "./ProductsStore";
 
-const CartContext = createContext({
+export const CartContext = createContext({
     items: [],
     getProductQuantity: () => { },
     addOneToCart: () => { },
