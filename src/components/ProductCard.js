@@ -26,6 +26,7 @@ function ProductCard(props) {
                                 <Button sm="6" className="mx-2" onClick={() => cart.addOneToCart(product.id)}>+</Button>
                             </Col>
                         </Form>
+                        <Button variant="danger" className='my-2' onClick={() => cart.deleteFromCart(product.id)}>Remove All Items</Button>
                     </>
                     :
                     <Button variant='primary' onClick={() => cart.addOneToCart(product.id)}>Add to Cart</Button>
