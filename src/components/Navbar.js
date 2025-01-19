@@ -17,7 +17,6 @@ function NavbarComponent() {
                 <Navbar.Brand href="/"></Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                    <Button onClick={() => console.log(productsCount.quantity)}>click</Button>
                     <Button onClick={handleShow}>Cart {productsCount} Items</Button>
                 </Navbar.Collapse>
             </Navbar>
@@ -27,7 +26,17 @@ function NavbarComponent() {
                     <Modal.Title>Shopping Cart</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h1>This is the modal body</h1>
+                    {productsCount > 0 ?
+                        <>
+                            <p>Items in your cart:</p>
+                            <Container>
+                                {cart.items.map(prod => {
+                                    <h1>{prod.title}</h1>
+                                })}
+                            </Container>
+                        </>
+                        : <h1>There are no items in your cart</h1>
+                    }
                 </Modal.Body>
             </Modal>
         </>
