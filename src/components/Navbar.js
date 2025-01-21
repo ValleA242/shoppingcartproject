@@ -17,7 +17,7 @@ function NavbarComponent() {
                 <Navbar.Brand href="/"></Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                    <Button onClick={() => console.log(productsCount)}>click</Button>
+                    <Button onClick={() => console.log(productsCount.quantity)}>click</Button>
                     <Button onClick={handleShow}>Cart {productsCount} Items</Button>
                 </Navbar.Collapse>
             </Navbar>

@@ -80,7 +80,9 @@ export function CartProvider({ children }) {
         cartProducts.map((cartItem) => {
             const productData = getProductData(cartItem.id)
             totalCost += (productData.price * cartItem.quantity)
-        })
+        });
+
+        return totalCost;
 
     }
 
@@ -101,4 +103,4 @@ export function CartProvider({ children }) {
 
 }
 
-export default CartProvider
+export default CartProvider;
