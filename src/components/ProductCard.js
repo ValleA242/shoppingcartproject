@@ -7,6 +7,7 @@ function ProductCard(props) {
     const product = props.product;
     const cart = useContext(CartContext);
     const productQuantity = cart.getProductQuantity(product.id);
+    console.log(cart.items)
 
     return (
         <Card>
@@ -29,7 +30,9 @@ function ProductCard(props) {
                         <Button variant="danger" className='my-2' onClick={() => cart.deleteFromCart(product.id)}>Remove All Items</Button>
                     </>
                     :
-                    <Button variant='primary' onClick={() => cart.addOneToCart(product.id)}>Add to Cart</Button>
+                    <>
+                        <Button variant='primary' onClick={() => cart.addOneToCart(product.id)}>Add to Cart</Button>
+                    </>
                 }
 
             </Card.Body>
