@@ -20,4 +20,3 @@ export default function CartProduct(props) {
     )
 }
 
-//test commit
