@@ -34,6 +34,9 @@ function NavbarComponent() {
                             {cart.items.map((currentProduct, index) => (
                                 <CartProduct key={index} id={currentProduct.id} quantity={currentProduct.quantity}></CartProduct>
                             ))}
+
+                            <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+                            <Button variant='success'>Check Out</Button>
                         </>
                         : <h1>There are no items in your cart</h1>
                     }
