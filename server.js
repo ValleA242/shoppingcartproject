@@ -1,0 +1,3 @@
+//sk_test_51SPs8IQRa21qTGw7KODENCZcJfygE7Zz1kUVqWqB6q4EvPaye2EhUylXBpdwSXX9ipPV0RHceudc409rZd0Qim0F00FMIkanBS
+// Coffee = price_1SPsP4QRa21qTGw7RKep4TXZ
+//Sunglasses = price_1SPsQrQRa21qTGw7NOosp13t
