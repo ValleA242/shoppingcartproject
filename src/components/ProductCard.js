@@ -1,7 +1,7 @@
 //BS imports 
 import { Card, Button, Form, Row, Col } from 'react-bootstrap';
 
-function productCard(props) {
+function ProductCard(props) {
     const product = props.product;
 
     return (
@@ -10,8 +10,14 @@ function productCard(props) {
                 <Card.Title>
                     {product.title}
                 </Card.Title>
+                <Card.Text>
+                    ${product.price}
+                </Card.Text>
+                <Button variant='primary'>Add to Cart</Button>
             </Card.Body>
         </Card>
     )
 
 }
+
+export default ProductCard;
