@@ -36,4 +36,4 @@ function getProductData(id) {
 
 }
 
-export { productArray };
+export { productArray, getProductData };
