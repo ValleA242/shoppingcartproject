@@ -32,6 +32,8 @@ function getProductData(id) {
         return 'Undefined'
     }
 
+    return productData;
+
 }
 
 export { productArray };
